@@ -8,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class PorPaisComponent {
 
+  termino: string = 'Hola mundo';
+
+  buscar(){
+    console.log(this.termino);
+  }
 }
