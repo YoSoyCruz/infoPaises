@@ -20,7 +20,7 @@
     No se encontró nada con el término {{termino}}
 </div>
 
-<div *ngIf="!hayError" class="row">
+<div *ngIf="paises.length > 0" class="row">
     <div class="col">
         <table class="table table-hover">
             <thead>
@@ -31,12 +31,16 @@
                 <th></th>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Bandera</td>
-                    <td>nombre</td>
-                    <td>1234</td>
-                    <td><a>Ver mas...</a></td>
+                <tr *ngFor="let info of paises; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>
+                        <img src="{{info.flags.svg}}" class="small-flag" alt="{{info.flags.alt}}" >
+                    </td>
+                    <td>{{info.name.common}}</td>
+                    <td>{{info.population | number}}</td>
+                    <td>
+                        <a [routerLink]="['/pais/', info.cca2]">Ver más...</a>
+                    </td>
                 </tr>
             </tbody>
         </table>
