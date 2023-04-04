@@ -9,7 +9,7 @@ import { PaisService } from '../../services/pais.service';
 })
 export class PorPaisComponent {
 
-  termino: string = 'Hola mundo';
+  termino: string = '';
   hayError: boolean = false;
 
   constructor( private PaisService: PaisService){}
