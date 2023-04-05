@@ -1,1 +1,53 @@
-<p>ver-pais works!</p>
+<div *ngIf="!pais; else divPais"
+ class="alert alert-info">
+    Espere por favor...
+</div>
+
+<ng-template #divPais>
+    <div class="row">
+        <div class="col-12">
+            <h1>Pais: <small> {{pais.name.common}} </small> </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <h3>Bandera</h3>
+            <img [src]="pais.flags.svg" alt="pais.flags.alt" class="img-thumbnail"/>
+        </div>
+        <div class="col">
+            <h3>Información</h3>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <strong>Población</strong> {{pais.population | number}}
+                </li>
+                <li class="list-group-item">
+                    <strong>Capital</strong> {{pais.capital}}
+                </li>
+                <li class="list-group-item">
+                    <strong>Continente</strong> {{pais.continents}}
+                </li>
+                <li class="list-group-item">
+                    <strong>Fronteras terrestres</strong> {{pais.borders}}
+                </li>
+                <li *ngFor="let currencie of pais.currencies | keyvalue"
+                    class="list-group-item">
+                    <strong>Nombre de moneda y símbolo</strong> {{currencie.value.name}} ({{currencie.value.symbol}} {{currencie.key}})
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <h3>Traducciones</h3>
+    <div class="row">
+        <div class="col">
+            <span *ngFor="let translation of pais.translations | keyvalue"
+            class="badge bg-info ms-1">{{translation.key}} | {{ translation.value.common}}</span>
+        </div>
+    </div>
+
+</ng-template>
+
+
+
+
